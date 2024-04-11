@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Cartoonizer</title>
+</head>
+<body>
+    <h1>Image Cartoonizer</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="image" accept="image/*">
+        <button type="submit">Cartoonize</button>
+    </form>
+    {% if cartoon_image %}
+    <img src="data:image/jpeg;base64,{{ cartoon_image }}" alt="Cartoon Image">
+    {% endif %}
+</body>
+</html>

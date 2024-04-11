@@ -1,0 +1,253 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+
+    <title>{% block title%} {% endblock %}</title>
+    <style>
+      .navbar-shadow {
+        width: 90vw; /* Same as the width of the navbar */
+        margin: auto;
+        height: 2px; /* Height of the line */
+        background-color: #000; /* Color of the line */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow effect */
+      }
+      .middle {
+        width: 90vw;
+        margin: auto;
+      }
+      .playgrnd {
+        margin-top: 10vh;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90vw; /* Same as the width of the navbar */
+        /* margin: auto; */
+        height: 95vh;
+        
+      }
+
+      .headng {
+        width: 100%; /* Full width */
+        text-align: center; /* Center the text horizontally */
+        display: flex; /* Enable flexbox layout */
+        justify-content: center; /* Center the content horizontally */
+        align-items: center; /* Center the content vertically */
+      }
+      .headng h1 {
+        font-size: 6.5rem;
+      }
+      .headng h1 b {
+        background: linear-gradient(
+            60.72deg,
+            rgb(14, 0, 172) -11%,
+            rgb(255, 52, 249) 86.67%
+          )
+          padding-box text;
+        font-style: normal;
+        -webkit-text-fill-color: transparent;
+      }
+      @media (max-width: 550px) {
+        .headng h1 {
+          font-size: 4rem; /* Reduce font size for smaller screens */
+        }
+      }
+      .crd {
+    /* Set maximum width to ensure responsiveness */
+    margin-top: 10vh;
+    max-width: 500px; /* Increase the maximum width */
+    /* Add some padding */
+    padding: 20px;
+    /* Add box shadow for depth */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Round the corners */
+    border-radius: 8px;
+    /* Add background color */
+    background-color: #ffffff;
+    /* Center the image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Ensure the image doesn't overflow */
+    overflow: hidden;
+    /* Increase the height and width */
+    width: 100%; /* Set the width to 100% */
+    height: 500px; /* Set the height to 500px */
+}
+
+
+.crd img {
+    /* Ensure the image fits within the container */
+    max-width: 100%;
+    height: auto;
+}
+.warning{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+      
+      .button {
+        display: inline-block;
+        margin: 25px;
+      }
+
+      .button a {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #d255b0;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+
+      .button a:hover {
+        background-color: #550fc3;
+      }
+      
+      .footer{
+        display: flex;
+        justify-content:space-around;
+        color: white;
+        align-items: center;
+        height: 10vh;
+        width: 100vw;
+        background-color: black;
+        margin-top: 35vh;
+      }
+
+
+
+
+    </style>
+  </head>
+  
+    
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white mx-auto"
+      style="max-width: 90vw; height: 15vh"
+    >
+      <a class="navbar-brand" href="/">Artoon</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/">About Us</a>
+          </li>
+
+          
+
+          <li class="nav-item">
+            <a class="nav-link" href="/">Contact Us</a>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+    <div class="navbar-shadow"></div>
+    <nav aria-label="breadcrumb" class="middle">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item active"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active"><a href="/cartoon/">Cartoonization</a></li>
+        <li class="breadcrumb-item" aria-current="page">Result</li>
+      </ol>
+    </nav>
+    {% if cartoon_image %}
+    <div class="playgrnd middle">
+      <div class="headng full-width">
+        <h1><b>Bang..!</b></h1>
+      </div>
+      <div class="crd">
+        
+    
+    <img src="data:image/jpeg;base64,{{ cartoon_image }}" alt="Cartoon Image">
+    
+            
+        </div>
+        <div class="button">
+            <a href="{{ download_response }}" download>Download</a>
+          </div>
+        </div>
+        {% else %}
+        <div class="warning">
+          <div class="headng full-width">
+            <h1><b>Please upload your picture..!</b></h1>
+          </div>
+          
+            <div class="button">
+                <a href="/cartoon/">Get Started For Free</a>
+            </div>
+        </div>
+              
+        
+        {% endif %}
+
+
+    
+      
+    
+    <div class="footer">
+      
+        <div class="owner">
+          Developed By Devesh and Divyanshu
+        </div>
+      </div>
+
+    {% block body %} {% endblock %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"
+    ></script>
+    {% block js %} {% endblock %}
+  </body>
+</html>
